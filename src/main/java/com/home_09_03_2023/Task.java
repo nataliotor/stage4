@@ -5,7 +5,6 @@ import lombok.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-//todo how to use required constrcturo in lombok
 @Data
 public class Task {
     private int id;//G
@@ -17,15 +16,14 @@ public class Task {
     private LocalDateTime started;
     private LocalDateTime finished;
 
-    private Author author; //todo move to other class
+    private Author author;
     private  String assigned;//R
-
     private Status status;//G
     private Priority priority;
     private boolean isImportant;
     private boolean isUrgent;
 
-    private Category category; //todo Category as class!!!
+    private Category category;
     private int points;
     private double ratePerHours;
 
