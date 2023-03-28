@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Random;
 
 @Data
 public class Task {
@@ -15,38 +16,25 @@ public class Task {
     private LocalDateTime due;//R
     private LocalDateTime started;
     private LocalDateTime finished;
-
     private Author author;
-    private  String assigned;//R
+    private String assigned;//R
     private Status status;//G
     private Priority priority;
     private boolean isImportant;
     private boolean isUrgent;
-
     private Category category;
     private int points;
     private double ratePerHours;
 
-
-    public Task(int id, String topic, String description, LocalDateTime created, LocalDateTime updated, LocalDateTime due, LocalDateTime started, LocalDateTime finished, Status status, boolean isImportant, boolean isUrgent, int points, double ratePerHours) {
-        this.id = id;
+    public Task(String topic, String description, LocalDateTime due, String assigned) {
         this.topic = topic;
         this.description = description;
-        this.created = created;
-        this.updated = updated;
         this.due = due;
-        this.started = started;
-        this.finished = finished;
-        this.status = status;
-        this.isImportant = isImportant;
-        this.isUrgent = isUrgent;
-        this.points = points;
-        this.ratePerHours = ratePerHours;
-    }
-
-
-    public Task(String mathematics, String theory_of_probability, String random_events, LocalDate now, LocalDate date, Priority critical) {
-        id = 0;
+        this.assigned = assigned;
+        this.created = LocalDateTime.now();
+        this.updated = LocalDateTime.now();
+        this.status = Status.NEW;
+        this.id = generateId();
     }
 
     public boolean isImportant() {
@@ -60,6 +48,19 @@ public class Task {
     protected boolean canEqual(final Object other) {
         return other instanceof Task;
     }
+
+    public int generateId() {
+        Random rnd = new Random();
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < 6; i++) {
+            int number = rnd.nextInt(10);
+            stringBuilder.append(number);
+
+        }
+
+       return Integer.parseInt(stringBuilder.toString());
+    }
+
 
 }
 

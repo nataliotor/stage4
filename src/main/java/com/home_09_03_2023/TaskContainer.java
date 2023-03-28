@@ -1,33 +1,22 @@
 package com.home_09_03_2023;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 
 
+
 public class TaskContainer {
     private ArrayList<Task> tasks = new ArrayList<>();
 
-    public ArrayList<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(ArrayList<Task> tasks) {
-        this.tasks = tasks;
-    }
-
-    public void createdTask(String name, String topic, LocalDate finished, String description) { // метод створити завдання, який бере на вхід данні
-        Task mathematics = new Task("Mathematics", "Theory of probability", "Random events", LocalDate.now(), LocalDate.ofYearDay(2023, 25), Priority.CRITICAL); // створюємо новий об'ект з параметрами
+    public void createdTask(String topic, String description, LocalDateTime due, String assigned) { // метод створити завдання, який бере на вхід данні
+        Task mathematics = new Task(topic,description,due, assigned); // створюємо новий об'ект з параметрами
         tasks.add(mathematics); // двізьми tasks та додай до нього новий об'ект mathematics
 
     }
-
-    public void addTask(String name, String topic, LocalDate finished, String description) { // метод додати завдання
-        tasks.add(new Task("Geometry", "are", "coordinates", LocalDate.now(), LocalDate.now(), Priority.LOW)); // візьми Task та додай завдання
-    }
-
 
     public void readTask(String name) { // прочитай завдання
         for (Task some : tasks) { //  проходимося по циклу
@@ -39,15 +28,15 @@ public class TaskContainer {
     }
 
     public void updateTask() { // метод оновити завдання (порахуй букви)
-        int current = 0; // значення дорівнює 0
-        for (Task some : tasks) { // пройдемося по циклу
-            if (Character.isAlphabetic(tasks.size())) { // якщо символ в tasks є буквою - порахуй його
-                current++; // увеличь на один
-                System.out.println(current);
-            }
-
-        }
-        System.out.println();
+//        int current = 0; // значення дорівнює 0
+//        for (Task some : tasks) { // пройдемося по циклу
+//            if (Character.isAlphabetic(tasks.size())) { // якщо символ в tasks є буквою - порахуй його
+//                current++; // увеличь на один
+//                System.out.println(current);
+//            }
+//
+//        }
+//        System.out.println();
 
 
     }
@@ -68,18 +57,14 @@ public class TaskContainer {
             System.out.println(some + " ");
         }
         System.out.println();
-
-
     }
 
-    public int compare(String Author1, String Author2) { // сравненние, оголушемо метод, на вхід беремо назву авторів
-        int result = Author2.length() - Author1.length(); // определяем разницу между длиной авторов, это разрешит нам отссортировать строки по увелечению
+    public int compare(String firstAuthor, String secondAuthor) { // сравненние, оголушемо метод, на вхід беремо назву авторів
+        int result = secondAuthor.length() - firstAuthor.length(); // определяем разницу между длиной авторов, это разрешит нам отссортировать строки по увелечению
 
         if (result == 0) { // если результат этих авторов имеют одинаковую длину
-            result =Author1.compareTo(Author2); /// сравни Author1 и Author2 и отсортируй по алфавиту
+            result =firstAuthor.compareTo(secondAuthor); /// сравни Author1 и Author2 и отсортируй по алфавиту
         }
-
-
         return result;
     }
 
