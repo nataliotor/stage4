@@ -6,6 +6,7 @@ import java.time.chrono.ChronoLocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 
 public class TaskContainer {
@@ -18,20 +19,10 @@ public class TaskContainer {
 
     }
 
-    //TODO ->id>task
-    //TODO -> LocalDate from -> LocalDate to
-//    public void readTask(String name) { // прочитай завдання
-//        for (Task some : tasks) { //  проходимося по циклу
-//            if (some.getTopic().equals(name)) { // якщо some.getTopic співпадае name
-//                System.out.println("Task " + some.getTopic()); // надрукуй це завдання
-//            }
-//        }
-//        System.out.println("No found"); // якщо такої назви немає, напиши, що не знайшов
-//    }
-    public void readTaskId(int id) { // метод прочитай завдання, з вхідним параметром id
+    public Task readTaskId(int id) { // метод прочитай завдання, з вхідним параметром id
         for (Task task : tasks) { // проходимося по циклу
             if (task.generateId() == id) { // якщо завдання з генерованим id співпадає з заданим id
-                System.out.println("Task Id " + task.generateId()); // то, надрукуй його
+                return task;
 //
             } else {
                 System.out.println("No task with ID " + id); // то, напиши, що завдання не знайдено
@@ -39,9 +30,10 @@ public class TaskContainer {
             }
         }
 
+        return null;
     }
 
-    public void readTaskBetween(LocalDateTime created, LocalDateTime finished) { // метод який шукає завдання, які знаходяться між двома датами
+    public List<Task> readTaskBetween(LocalDateTime created, LocalDateTime finished) { // метод який шукає завдання, які знаходяться між двома датами
         ArrayList<Task> result = new ArrayList<>(); // створюємо ArrayList result, де будемо зберігати завдання
         for (Task task : tasks) { // проходимося по масиву
             LocalDateTime due = task.getDue(); // змінній due присовоюємо значання getDue, яке ми отримали з task
@@ -49,26 +41,13 @@ public class TaskContainer {
                 result.add(task); // то додай завдання до списку
             }
         }
+        return result;
     }
 
 
-        //public void updateTask () { // метод оновити завдання (порахуй букви)
-//        int current = 0; // значення дорівнює 0
-//        for (Task some : tasks) { // пройдемося по циклу
-//            if (Character.isAlphabetic(tasks.size())) { // якщо символ в tasks є буквою - порахуй його
-//                current++; // увеличь на один
-//                System.out.println(current);
-//            }
-//
-//        }
-//        System.out.println();
-
-
-
     public void deleteTask() { // видалити завдання
-        LocalDate finished = LocalDate.of(2023, 03, 12);
+        LocalDate finished = LocalDate.of(2023, 3, 12);
         for (Task some : tasks) { // пройдемося по циклу
-            some.isUrgent(); // завдання є правдою
             if (some.isUrgent() && some.getFinished().isBefore(ChronoLocalDateTime.from(finished))) { // якщо завдання я правдою ы дата здачі до finished
                 tasks.remove(some); // видали це завдання
             }
