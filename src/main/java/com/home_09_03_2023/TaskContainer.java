@@ -3,8 +3,7 @@ package com.home_09_03_2023;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 public class TaskContainer {
@@ -82,11 +81,23 @@ public class TaskContainer {
     public int getTotalTask() { // порахувати кількість завдань
         int sumTask = 0; // створюємо зміну sumTask, яка дорівнює 0
         for (Task task : tasks) { // проходимося по масиву
-            sumTask ++; // порахуй завдання
+            sumTask++; // порахуй завдання
         }
         return sumTask;
 
     }
+
+    public int compare(Task p1, Task p2) {  /// порівняння двох об'єктів
+        return p1.getTopic().compareTo(p2.getTopic());
+
+    }
+
+    public void sortTask (List<Task> tasks, Comparator<Task> comparator){ // сотрування //Я НЕ ЗРОЗУМІЛА
+        Collections.sort(tasks, comparator);
+
+    }
+
+
 
 
 }
