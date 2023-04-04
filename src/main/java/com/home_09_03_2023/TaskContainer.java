@@ -3,28 +3,28 @@ package com.home_09_03_2023;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 public class TaskContainer {
     private ArrayList<Task> tasks = new ArrayList<>();
 
-    public void createdTask(String topic, String description, LocalDateTime due, String assigned) { // метод створити завдання, який бере на вхід данні
+    //TODO 1 - Check if topic already exist amoung other tasks, if exist not add it!!!
+    public int createdTask(String topic, String description, LocalDateTime due, String assigned) { // метод створити завдання, який бере на вхід данні
+        for (Task task : tasks) { // проходимося по циклу
+            if (task.getTopic() == topic) { // якщо таск з доданним топиком співпадає з існуючим топиком, то поверни -1
+                return -1;
+            }
+        }
         Task mathematics = new Task(topic, description, due, assigned); // створюємо новий об'ект з параметрами
         tasks.add(mathematics); // двізьми tasks та додай до нього новий об'ект mathematics
-
-
+        return mathematics.getId();
     }
 
     public Task readTaskId(int id) { // метод прочитай завдання, з вхідним параметром id
         for (Task task : tasks) { // проходимося по циклу
-            if (task.generateId() == id) { // якщо завдання з генерованим id співпадає з заданим id
+            if (task.getId() == id) { // якщо завдання з генерованим id співпадає з заданим id
                 return task;
-//
-            } else {
-                System.out.println("No task with ID " + id); // то, напиши, що завдання не знайдено
-
             }
         }
 
@@ -82,9 +82,19 @@ public class TaskContainer {
     public int getTotalTask() { // порахувати кількість завдань
         int sumTask = 0; // створюємо зміну sumTask, яка дорівнює 0
         for (Task task : tasks) { // проходимося по масиву
-            sumTask ++; // порахуй завдання
+            sumTask++; // порахуй завдання
         }
         return sumTask;
+
+    }
+
+    public int compare(Task p1, Task p2) {  /// порівняння двох об'єктів
+        return p1.getTopic().compareTo(p2.getTopic());
+
+    }
+
+    public void sortTask(List<Task> tasks, Comparator<Task> comparator) { // сотрування //Я НЕ ЗРОЗУМІЛА
+        Collections.sort(tasks, comparator);
 
     }
 
