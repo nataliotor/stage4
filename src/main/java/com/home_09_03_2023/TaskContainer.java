@@ -1,9 +1,14 @@
 package com.home_09_03_2023;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDateTime;
 import java.util.*;
+import java.util.Scanner;
 
 
 public class TaskContainer {
@@ -93,10 +98,33 @@ public class TaskContainer {
 
     }
 
-    public void sortTask(List<Task> tasks, Comparator<Task> comparator) { // сотрування //Я НЕ ЗРОЗУМІЛА
-        Collections.sort(tasks, comparator);
+    ///•	Назва методу: saveTasksToFile
+//•	Вхідні параметри: рядок, що представляє шлях до файлу, де будуть зберігатися завдання.
+//•	Тип повернення: порожній
+//•	Опис: Цей метод зберігає всі завдання в TaskContainer до файлу у форматі CSV (або будь-якому іншому форматі) за вказаним шляхом файлу.
+    public void saveTasksToFile() {
+        TaskContainer taskContainer = new TaskContainer(); /// Створюємо об'єкт класу TaskContainer
+        File file = new File("src/main/java/com/home_09_03_2023/historyofJava"); // Створюємо об'єкт класу File з шляхом до файлу з іменем "historyofJava"
+        try {
+            Scanner input = new Scanner(file); /// Створюємо об'єкт класу Scanner, який буде зчитувати дані з файлу
 
+            while (input.hasNext()) {  // Запускаємо цикл, який буде виконуватися, поки є наступний рядок у файлі
+                String textLine = input.nextLine(); // Зчитуємо наступний рядок з файлу
+
+
+            }
+            //taskContainer.saveTasksToFile(t);
+
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 
 }
+
+
+
+
+
