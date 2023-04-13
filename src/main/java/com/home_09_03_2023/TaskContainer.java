@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDateTime;
 import java.util.*;
-import java.util.Scanner;
+import java.util.stream.Collectors;
 
 
 public class TaskContainer {
@@ -99,28 +99,20 @@ public class TaskContainer {
 //•	Вхідні параметри: рядок, що представляє шлях до файлу, де будуть зберігатися завдання.
 //•	Тип повернення: порожній
 //•	Опис: Цей метод зберігає всі завдання в TaskContainer до файлу у форматі CSV (або будь-якому іншому форматі) за вказаним шляхом файлу.
-    public void saveTasksToFile(String filePath) {
+    public int saveTasksToFile(String path, String delimiter, String format) {
         try {
-            TaskContainer taskContainer = new TaskContainer();
+            PrintWriter pw = new PrintWriter(new FileOutputStream(path)); // создаем объект PrintWriter для записи в файл по пути, указанному в параметре path.
 
-            FileWriter writer = new FileWriter(filePath);
-
-            for (Task task : taskContainer.createdTask("English", "war", LocalDateTime.now(), "Natasha")) {
-                writer.append(task.getTopic())
-                        .append(",")
-                        .append(task.getDescription())
-                        .append(",")
-                        .append(String.valueOf(task.getFinished());
-
+            for (Task task : tasks) { // проходимся по масиву
+                pw.printf(format, task.getTopic(), task.getDescription(), task.getFinished()); // Форматируем строку с помощью printf и записывает ее в файл.
+                pw.print(delimiter); // Записываем разделитель в файл между задачами.
             }
-            writer.flush();
-            writer.close();
-
-        } catch (IOException e) {
-            System.out.println("Failed to save tasks to file: " + e.getMessage());
+            pw.close(); // закрываем объект PrintWriter
+            System.out.println("Tasks successfully saved to file: " + path);
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage());
         }
-
-        return 1;
+        return 0;
     }
 
 
