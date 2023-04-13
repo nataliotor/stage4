@@ -29,9 +29,20 @@ class TaskContainerTest {
     }
     @Test
     void readTaskIdTest() {
-        TaskContainer taskContainer = new TaskContainer();
+        TaskContainer taskContainer = new TaskContainer(); // создаем новый объект TaskContainer
+        Task task = taskContainer.readTaskId(2365); // вызываем метод readTaskId с Id 2365 и сохраняем его Task
+        assertEquals(2365,task.getId()); // сравниваем два значения (2365 и task.getId). Если значения не равны, то тест завершится неудачей
 
     }
+    @Test
+    void readTaskIdNegativTest(){  /// негативный тест - проверяет, что код работает неправильно
+        TaskContainer taskContainer = new TaskContainer(); // создаем новый объект TaskContainer
+        Task task = taskContainer.readTaskId(-1); // вызываем метод readTaskId с отрицательный Id (-1) и сохраняется в Task
+        assertNull(task); // Метод assertNull()означает, что «переданный параметр должен быть null»: если он не равен нулю, то тестовый пример не пройден.
+        // т.к у нас значение -1, то тест будет не пройден
+    }
+
+
 
     @Test
     void readTaskBetween() {
