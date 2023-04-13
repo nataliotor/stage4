@@ -1,9 +1,6 @@
 package com.home_09_03_2023;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.chrono.ChronoLocalDateTime;
@@ -17,8 +14,8 @@ public class TaskContainer {
     //TODO 1 - Check if topic already exist amoung other tasks, if exist not add it!!!
     public int createdTask(String topic, String description, LocalDateTime due, String assigned) { // метод створити завдання, який бере на вхід данні
         for (Task task : tasks) { // проходимося по циклу
-            if (task.getTopic() == topic) { // якщо таск з доданним топиком співпадає з існуючим топиком, то поверни -1
-                return -1;
+            if (task.getTopic().equals(topic)) { // якщо таск з доданним топиком співпадає з існуючим топиком, то поверни -1
+                return -1; // (-1, то що не існуюча id
             }
         }
         Task mathematics = new Task(topic, description, due, assigned); // створюємо новий об'ект з параметрами
@@ -102,23 +99,28 @@ public class TaskContainer {
 //•	Вхідні параметри: рядок, що представляє шлях до файлу, де будуть зберігатися завдання.
 //•	Тип повернення: порожній
 //•	Опис: Цей метод зберігає всі завдання в TaskContainer до файлу у форматі CSV (або будь-якому іншому форматі) за вказаним шляхом файлу.
-    public void saveTasksToFile() {
-        TaskContainer taskContainer = new TaskContainer(); /// Створюємо об'єкт класу TaskContainer
-        File file = new File("src/main/java/com/home_09_03_2023/historyofJava"); // Створюємо об'єкт класу File з шляхом до файлу з іменем "historyofJava"
+    public void saveTasksToFile(String filePath) {
         try {
-            Scanner input = new Scanner(file); /// Створюємо об'єкт класу Scanner, який буде зчитувати дані з файлу
+            TaskContainer taskContainer = new TaskContainer();
 
-            while (input.hasNext()) {  // Запускаємо цикл, який буде виконуватися, поки є наступний рядок у файлі
-                String textLine = input.nextLine(); // Зчитуємо наступний рядок з файлу
+            FileWriter writer = new FileWriter(filePath);
 
+            for (Task task : taskContainer.createdTask("English", "war", LocalDateTime.now(), "Natasha")) {
+                writer.append(task.getTopic())
+                        .append(",")
+                        .append(task.getDescription())
+                        .append(",")
+                        .append(String.valueOf(task.getFinished());
 
             }
-            //taskContainer.saveTasksToFile(t);
+            writer.flush();
+            writer.close();
 
-
-        } catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Failed to save tasks to file: " + e.getMessage());
         }
+
+        return 1;
     }
 
 

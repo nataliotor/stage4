@@ -17,14 +17,14 @@ class TaskContainerTest {
     }
     /// 1 - підготувати щось (підготовл.ємо данні)
     /// 2 - робимо дію (виконуємо дію), щоб переконатись, що вона правильно спрацювала нам доволится створювати метод (Task createdTask = taskContainer.readTaskId(id))
-    /// 3 - робио перевірку
+    /// 3 - робимо перевірку
 
-    @Test
+    @Test // маємо перевіримо, що таск з таким самим топіком не створиться
     void createTaskTestIfSame(){ // в нас е умова (якщо цей таск існує з таким топіком, поверни -1
         TaskContainer taskContainer = new TaskContainer(); // створюэмо об'ект TaskContainer
         int id = taskContainer.createdTask("English", "war", LocalDateTime.now(), "Natasha"); // викликаємо createdTask та зберігаемо те, що повертаеться (int id = )
-        Task createdTask = taskContainer.readTaskId(id); // викликаємо метод readTaskId і зберігаємо його в Task
-        assertEquals("English", createdTask.getTopic()); // якщо в нас э умова (if) робимо перевірку не по тому, що очікуємо, а потому що задаємо
+        int nextCreatedTask = taskContainer.createdTask("English", "war", LocalDateTime.now(), "Natasha");
+        assertEquals(-1, nextCreatedTask);
 
     }
     @Test
