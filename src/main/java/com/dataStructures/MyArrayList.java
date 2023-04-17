@@ -32,6 +32,16 @@ public class MyArrayList implements MyList {
 
     @Override
     public void delete(int index) {
+        for (int i = 0; i < size; i++) { // проходимся по массиву
+            if (i == index) { // если  i равно  index
+                for (int j = i; j < size - 1; j++) { // запускаем цикл, (size - 1) - доходим до предпоследнео элемента, но его не трогаем
+                    data[j] = data[j + 1]; // копируем один элемен массива влево
+                }
+                size--; // уменьшаем размер массива
+            }
+
+        }
+
 
     }
 
