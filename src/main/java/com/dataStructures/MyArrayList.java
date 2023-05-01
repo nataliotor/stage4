@@ -7,12 +7,12 @@ public class MyArrayList implements MyList {
 
 
     @Override
-    public void add(int item) {
-        if (size == data.length) {
-            for (int i = 0; i < data.length; i++) {
-                if (data[i] == 0) {
-                    data[i] = item;
-                    size++;
+    public void add(int item) {  // добавляет новый элемент item в массив data
+        if (size == data.length) {  //Если размер массива data равен количеству элементов, которые он уже содержит, то выполнить следующий блок кода
+            for (int i = 0; i < data.length; i++) { // начинаем цикл
+                if (data[i] == 0) { // Если значение элемента массива data с индексом i равно 0, то выполнить
+                    data[i] = item; // Присвоить значение item элементу массива data с индексом i.
+                    size++; // Увеличить значение переменной size на 1.
                 }
             }
         }
@@ -20,7 +20,7 @@ public class MyArrayList implements MyList {
     }
 
     @Override
-    public int get(int index) {
+    public int get(int index) { // получить элемент
         for (int i = 0; i < data.length; i++) { // проходимся по массиву
             if (i == index) { // если i совпадает с index
                 return data[i]; // верни значение data
