@@ -17,16 +17,29 @@ public class MyArrayList implements MyList {
             }
         }
 
-
     }
 
     @Override
     public int get(int index) {
-        return 0;
+        for (int i = 0; i < data.length; i++) { // проходимся по массиву
+            if (i == index) { // если i совпадает с index
+                return data[i]; // верни значение data
+            }
+        }
+        return 0; // если нет - верни 0
     }
 
     @Override
     public int update(int index, int element) {
+        if (size == data.length) { // проверяем заполнен ли массив внутри
+            for (int i = 0; i < data.length; i++) { // проходимся по длине массива
+                if (i != index || i == element) { // если i не равен index и i равен element
+                    data[i] = element; // возьми element и добавь его в ячейку
+                    size++; // увеличь значение size на 1
+                }
+
+            }
+        }
         return 0;
     }
 

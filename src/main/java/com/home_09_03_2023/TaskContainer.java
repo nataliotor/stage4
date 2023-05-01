@@ -99,25 +99,47 @@ public class TaskContainer {
 //•	Вхідні параметри: рядок, що представляє шлях до файлу, де будуть зберігатися завдання.
 //•	Тип повернення: порожній
 //•	Опис: Цей метод зберігає всі завдання в TaskContainer до файлу у форматі CSV (або будь-якому іншому форматі) за вказаним шляхом файлу.
-    public int saveTasksToFile(String path, String delimiter, String format) {
-        try {
-            PrintWriter pw = new PrintWriter(new FileOutputStream(path)); // создаем объект PrintWriter для записи в файл по пути, указанному в параметре path.
+//    public int saveTasksToFile(String path, String delimiter, String format) {
+//        try {
+//            PrintWriter pw = new PrintWriter(new FileOutputStream(path)); // создаем объект PrintWriter для записи в файл по пути, указанному в параметре path.
+//
+//            for (Task task : tasks) { // проходимся по масиву
+//                pw.printf(format, task.getTopic(), task.getDescription(), task.getFinished()); // Форматируем строку с помощью printf и записывает ее в файл.
+//                pw.print(delimiter); // Записываем разделитель в файл между задачами.
+//            }
+//            pw.close(); // закрываем объект PrintWriter
+//            System.out.println("Tasks successfully saved to file: " + path);
+//        } catch (FileNotFoundException e) {
+//            System.out.println("File not found: " + e.getMessage());
+//        }
+//        return 0;
+//    }
 
-            for (Task task : tasks) { // проходимся по масиву
-                pw.printf(format, task.getTopic(), task.getDescription(), task.getFinished()); // Форматируем строку с помощью printf и записывает ее в файл.
-                pw.print(delimiter); // Записываем разделитель в файл между задачами.
-            }
-            pw.close(); // закрываем объект PrintWriter
-            System.out.println("Tasks successfully saved to file: " + path);
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found: " + e.getMessage());
+
+    public int saveTasksToFile(ArrayList<Task> tasks, String filename) {
+
+        try {
+            PrintWriter pw = new PrintWriter(new File(filename));
+            pw.printf("topic,id,description,created,updated");
+            for(Task task: tasks){
+                pw.println(task.toString());
         }
-        return 0;
+            return 1;
+
+        }catch (IOException exception){
+            exception.printStackTrace();
+            return -1;
+        }
+
+
+
     }
 
 
-}
+    }
+
 // TODO to csv метод
+
 
 
 

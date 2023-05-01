@@ -2,8 +2,11 @@ package com.home_09_03_2023;
 
 import lombok.*;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Random;
 
 @Data
@@ -58,9 +61,32 @@ public class Task {
 
         }
 
-       return Integer.parseInt(stringBuilder.toString()); // повертаємо число, конвертувавши його з String до int, виористовуючи метод parseInt
+        return Integer.parseInt(stringBuilder.toString()); // повертаємо число, конвертувавши його з String до int, виористовуючи метод parseInt
     }
 
+    public int csvMethod(ArrayList<Task> tasks) {
+        StringBuilder csv = new StringBuilder();
+        csv.append("topic, id,description,created,updated\n");
+
+        for (Task task : tasks) {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(task.getTopic()).append(",");
+            stringBuilder.append(task.getId()).append(",");
+            stringBuilder.append(task.getDescription()).append(",");
+            stringBuilder.append(task.getCreated()).append(",");
+            stringBuilder.append(task.getUpdated()).append("\n");
+            csv.append(stringBuilder);
+        }
+
+        try {
+            FileWriter writer = new FileWriter("tasks.csv");
+            writer.write(csv.toString());
+        } catch (IOException e) {
+            e.getMessage();
+        }
+
+        return 0;
+    }
 
 
 }
