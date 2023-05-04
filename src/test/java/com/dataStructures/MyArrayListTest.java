@@ -35,11 +35,6 @@ public class MyArrayListTest {
 
 
     }
-        @Test
-    void NegativAddTest() {
-
-
-    }
 
     @Test
     void deleteTest() {
@@ -53,6 +48,16 @@ public class MyArrayListTest {
         myArrayList.add(2); // вызов метода "add" на объекте "myArrayList" с аргументом "2".
         myArrayList.add(3); // вызов метода "add" на объекте "myArrayList" с аргументом "3".
         int expectedItem = 2;  // - определение ожидаемого значения элемента массива myArrayList с индексом 1
+        int actualItem = myArrayList.get(1); // вызов метода get() для получения элемента массива myArrayList с индексом 1 и сохранение результата в переменной actualItem
+        assertEquals(expectedItem,actualItem); // сравнение ожидаемого и фактического значений элемента массива myArrayList с индексом 1 с помощью метода assertEquals() из библиотеки тестирования JUnit. Если значения не равны, то тест не проходит.
+    }
+    @Test
+    void GET_NEGATIVE_TEST() { // проверяет поведение метода «get» в классе MyArrayList, когда индекс отрицательный
+        MyArrayList myArrayList = new MyArrayList(); // // создание нового объекта "MyArrayList" с именем "myArrayList".
+        myArrayList.add(1); // // вызов метода "add" на объекте "myArrayList" с аргументом "1".
+        myArrayList.add(2); // вызов метода "add" на объекте "myArrayList" с аргументом "2".
+        myArrayList.add(3); // вызов метода "add" на объекте "myArrayList" с аргументом "3".
+        int expectedItem = 2;  // - определение ожидаемого значения элемента массива myArrayList с индексом 2
         int actualItem = myArrayList.get(1); // вызов метода get() для получения элемента массива myArrayList с индексом 1 и сохранение результата в переменной actualItem
         assertEquals(expectedItem,actualItem); // сравнение ожидаемого и фактического значений элемента массива myArrayList с индексом 1 с помощью метода assertEquals() из библиотеки тестирования JUnit. Если значения не равны, то тест не проходит.
     }
