@@ -55,16 +55,15 @@ public class MyArrayList implements MyList {
 
     @Override
     public int update(int index, int element) {
-        if (size == data.length) { // проверяем заполнен ли массив внутри
+        if (size < data.length) { // проверяем заполнен ли массив внутри
             for (int i = 0; i < data.length; i++) { // проходимся по длине массива
-                if (i != index || i == element) { // если i не равен index и i равен element
-                    data[i] = element; // возьми element и добавь его в ячейку
-                    size++; // увеличь значение size на 1
+                if (index < 0 || index > size) { // Данное условие проверяет, находится ли индекс элемента в пределах массива. Если индекс меньше нуля или больше значения size (т.е. больше чем количество элементов в массиве), то условие будет выполнено,
+                    data[index] = element; // присваивание элементу массива data с индексом index значение element. Это происходит в результате выполнения метода update.
                 }
 
             }
         }
-        return 0;
+        return index;
     }
 
     @Override
