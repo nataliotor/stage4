@@ -67,7 +67,7 @@ public class MyArrayList implements MyList {
     }
 
     @Override
-    public void delete(int index) {
+    public void delete(int index) { // удаление элемента по указанному индексу
         for (int i = 0; i < size; i++) { // проходимся по массиву
             if (i == index) { // если  i равно  index
                 for (int j = i; j < size - 1; j++) { // запускаем цикл, (size - 1) - доходим до предпоследнео элемента, но его не трогаем
