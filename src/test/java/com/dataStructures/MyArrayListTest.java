@@ -61,6 +61,27 @@ public class MyArrayListTest {
         assertEquals(2,myArrayList.get(1)); // перевіряємо, що перший другий зі списку дорівнює 2
 
     }
+    @Test
+    void DELETE_ONLY_ELEMENT_TEST(){ // метод тестує видалення єдиного елементу
+        MyArrayList myArrayList = new MyArrayList(); // створюємо новий об'єкт myArrayList
+        myArrayList.add(1); // додаємо елемент зі значенням 1 до кінця списку
+        myArrayList.delete(0); // викликаємо метод delete для видалення єдиного елементу
+        assertEquals(0,myArrayList.size()); // перевіряємо розмір списку, він повинен бути пустий
+        assertTrue(myArrayList.isEmpty()); // перевіряємо чи пустий список
+    }
+
+    @Test
+    void DELETE_ELEMENT_IN_MIDDLE_TEST (){ // метод тестує видалення елемента в середині масиву
+        MyArrayList myArrayList = new MyArrayList(); // створюємо новий об'єкт myArrayList
+        myArrayList.add(1); // додаємо елемент зі значенням 1 до кінця списку
+        myArrayList.add(2); // додаємо елемент зі значенням 2 до кінця списку
+        myArrayList.add(3); // додаємо елемент зі значенням 3 до кінця списку
+        myArrayList.delete(1); // викликаємо метод delete для видалення елементу в середині (2-ий елемент - це середина)
+        assertEquals(2,myArrayList.size()); // перевіряємо чи видалився елемент з середини (масив повинен був дорівнювати 2)
+        assertEquals(1,myArrayList.get(0)); // перевіряємо чи 1-ий елемент зі списку дорівнює 0
+        assertEquals(3,myArrayList.get(1)); // перевіряємо чи 3-ий елемент зі списку дорівнює 1
+
+    }
 
     @Test
     void GET_EXISTED_ELEMENT_BY_INDEX_TEST() {

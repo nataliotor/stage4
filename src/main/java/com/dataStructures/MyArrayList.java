@@ -89,4 +89,10 @@ public class MyArrayList implements MyList {
     public int size() {
         return size;
     }
+
+
+    public boolean isEmpty() {
+        return true;
+    }
+
 }
