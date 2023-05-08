@@ -46,7 +46,7 @@ public class MyArrayList implements MyList {
     @Override
     public int get(int index) { // объявление метода "get" с одним целочисленным аргументом "index", который возвращает значение типа int.
         if (index < 0 || index >= data.length) { //  если индекс меньше 0 или больше либо равен длине массива data, то выполнить следующий блок кода
-            throw new ArrayIndexOutOfBoundsException("Index" + index + " is out of bounds!"); // выбросить исключение типа ArrayIndexOutOfBoundsException, которое указывает, что индекс выходит за границы допустимого диапазона, с сообщением, которое состоит из строки "Index", переданного индекса и строки "is out of bounds!"
+            throw new ArrayIndexOutOfBoundsException("Index " + index + " is out of bounds!"); // выбросить исключение типа ArrayIndexOutOfBoundsException, которое указывает, что индекс выходит за границы допустимого диапазона, с сообщением, которое состоит из строки "Index", переданного индекса и строки "is out of bounds!"
 
 
         }
@@ -56,8 +56,8 @@ public class MyArrayList implements MyList {
     @Override
     public int update(int index, int element) {
         if (size < data.length) { // проверяем заполнен ли массив внутри
-            for (int i = 0; i < data.length; i++) { // проходимся по длине массива
-                if (index < 0 || index > size) { // Данное условие проверяет, находится ли индекс элемента в пределах массива. Если индекс меньше нуля или больше значения size (т.е. больше чем количество элементов в массиве), то условие будет выполнено,
+                for (int i = 0; i < data.length; i++) { // проходимся по длине массива
+                    if (index < 0 || index > size) { // Данное условие проверяет, находится ли индекс элемента в пределах массива. Если индекс меньше нуля или больше значения size (т.е. больше чем количество элементов в массиве), то условие будет выполнено,
                     data[index] = element; // присваивание элементу массива data с индексом index значение element. Это происходит в результате выполнения метода update.
                 }
 
