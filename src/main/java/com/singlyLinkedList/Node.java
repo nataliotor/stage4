@@ -11,7 +11,7 @@ public class Node { // оголошуємо клас Node, який предст
 }
 
 class LinkedList { // оголошуємо клас LinkedList, який є ВУЗЛОМ
-    private Node head; //створюємо приватне поле head - це є силка на перший вузел
+    Node head; //створюємо приватне поле head - це є силка на перший вузел
 
     public LinkedList() { // викликаємо конструктор
         this.head = null; // null говорить про те, що список пустий
@@ -20,7 +20,7 @@ class LinkedList { // оголошуємо клас LinkedList, який є ВУ
     public void insert(int data) { // метод insert використовується для вставлення нового елемента до кінця списку
         Node newNode = new Node(data); // створюємо новий вузел з переданим значенням data
 
-        if (head == null) { // якщо список поорожній
+        if (head == null) { // якщо список порожній
             head = newNode; // то новий список newNode стає головою списку
         } else { // в іншому випадку
             Node current = head; // створюємо змінну current, яка буде дорівнювати head, викорстовуємо цю зміну, що пройти до останнього узла
@@ -40,4 +40,43 @@ class LinkedList { // оголошуємо клас LinkedList, який є ВУ
         System.out.println();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
