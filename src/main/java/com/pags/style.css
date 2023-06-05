@@ -1,0 +1,16 @@
+h1{
+text-align: center;
+background-color: red;
+}
+form{
+text-align: center;
+}
+
+body{
+background-color: lightblue;
+opacity: 1.5;
+}
+
+
+// що таке класи, як додаються
+// What should QA automation integer know about css for better UI testing
